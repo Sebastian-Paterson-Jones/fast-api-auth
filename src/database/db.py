@@ -13,9 +13,8 @@ Base: DeclarativeMeta = declarative_base()
 class UserTable(Base, SQLAlchemyBaseUserTable):
     pass
 
-
 engine = sqlalchemy.create_engine(
-    DATABASE_URL, connect_args={"check_same_thread": False}
+    DATABASE_URL
 )
 Base.metadata.create_all(engine)
 

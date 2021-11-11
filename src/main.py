@@ -24,7 +24,7 @@ app = FastAPI()
 # router for user login and logout
 app.include_router(
     fastapi_users.get_auth_router(jwt_authentication),
-    prefix="/auth/jwt",
+    prefix="/auth",
     tags=["auth"],
 )
 

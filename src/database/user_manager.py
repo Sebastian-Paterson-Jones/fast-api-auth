@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Dict, Any
 
 from fastapi import Depends, Request
 from fastapi_users import BaseUserManager
@@ -7,7 +7,6 @@ from .db import get_user_db
 from .models import UserCreate, UserDB
 
 SECRET = "SECRET"
-
 
 class UserManager(BaseUserManager[UserCreate, UserDB]):
     user_db_model = UserDB
