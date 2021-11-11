@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  web:
+    build: .
+    command: uvicorn main:app --reload --host 0.0.0.0
+    volumes:
+      - ./src:/usr/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: example
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

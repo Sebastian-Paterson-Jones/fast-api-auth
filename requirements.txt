@@ -1,0 +1,8 @@
+fastapi
+starlette
+pydantic
+uvicorn[standard]
+fastapi-users[sqlalchemy]
+databases[postgresql]
+psycopg2-binary
+
