@@ -20,6 +20,5 @@ Base.metadata.create_all(engine)
 
 users = UserTable.__table__
 
-
 async def get_user_db():
     yield SQLAlchemyUserDatabase(UserDB, database, users)

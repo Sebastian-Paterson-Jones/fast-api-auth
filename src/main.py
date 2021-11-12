@@ -4,7 +4,7 @@ from fastapi_users.authentication import JWTAuthentication
 
 from database.models import User, UserCreate, UserUpdate, UserDB
 from database.user_manager import get_user_manager
-
+from database.db import database
 
 SECRET = "SECRET"
 
@@ -20,6 +20,16 @@ fastapi_users = FastAPIUsers(
 )
 
 app = FastAPI()
+
+# establish db connection
+@app.on_event("startup")
+async def startup():
+    await database.connect()
+
+# close db connection
+@app.on_event("shutdown")
+async def shutdown():
+    await database.disconnect()
 
 # router for user login and logout
 app.include_router(
